@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract MyToken {
-    string public name = "name";
-    string public symbol = "SYS";
+contract Mystr {
+    string public name = "Save your Ident";
+    string public symbol = "SYI";
     uint8 public decimals = 18;
     uint256 public totalSupply = 1000000 * 10 ** uint256(decimals);
     uint256 public constant MAX_SUPPLY = 2**256 - 1; //max supply
