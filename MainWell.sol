@@ -2,17 +2,17 @@
 pragma solidity ^0.8.0;
 
 contract MyToken {
-    string public name = "Your Token Name";
-    string public symbol = "SYM";
+    string public name = "name";
+    string public symbol = "SYS";
     uint8 public decimals = 18;
     uint256 public totalSupply = 1000000 * 10 ** uint256(decimals);
-    uint256 public constant MAX_SUPPLY = 2**256 - 1; // Set your actual max supply
+    uint256 public constant MAX_SUPPLY = 2**256 - 1; //max supply
     address public owner;
     
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    // Events
+    // all events
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Transfer(address indexed from, address indexed to, uint256 value);
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
@@ -36,7 +36,7 @@ contract MyToken {
         balanceOf[msg.sender] = totalSupply;
     }
 
-    // Safe transfer functions with pause protection
+    //safe transfer functions with pause protection
     function transfer(address recipient, uint256 amount) public whenNotPaused returns (bool) {
         require(recipient != address(0), "Cannot transfer to the zero address");
         require(balanceOf[msg.sender] >= amount, "Insufficient balance");
@@ -62,7 +62,7 @@ contract MyToken {
         return true;
     }
 
-    // Safe approval functions with anti-frontrunning protection
+    //safe approval functions with anti-frontrunning protection
     function approve(address spender, uint256 amount) public returns (bool) {
         require(spender != address(0), "Cannot approve to the zero address");
         allowance[msg.sender][spender] = amount;
@@ -102,7 +102,7 @@ contract MyToken {
         owner = address(0);
     }
 
-    // Safe mint function with supply cap
+    //safe mint function with supply cap
     function mint(address account, uint256 amount) public onlyOwner {
         require(account != address(0), "Cannot mint to the zero address");
         require(totalSupply + amount <= MAX_SUPPLY, "Mint would exceed max supply");
